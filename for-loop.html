@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        代码会输出 5 5 5 5 5，当i =
+        0时，生成一个定时器，将回调插入到事件队列中，等待当前队列中无任务执行时立即执行，而此时for循环正在执行，所以回调被搁置。当for循环执行完成后，队列中存在着5个回调函数，他们的都将执行console.log(i)的操作，因为当前JS代码上中并没有使用块级作用域，所以i的值在for循环结束后一直为5，所以代码将输出5个5
+    </div>
+
+
+    <script>
+        for (var i = 0; i < 5; i++) {
+            setTimeout(function () {
+                console.log(i);
+            }, 0);
+        }
+
+    </script>
+</body>
+
+</html>
